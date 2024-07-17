@@ -6,7 +6,7 @@ public class CountdownTimer : MonoBehaviour
 {
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private GameObject _losePanel;
-    private float timeRemaining = 5;
+    private float timeRemaining = 30;
     private bool timerIsRunning = false;
 
     private void Start()
