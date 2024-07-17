@@ -20,9 +20,10 @@ public class WordGameController : MonoBehaviour
 
         GameObject[] letters = _wordLevel[LevelIndex - 1].SetLetterPrefabs();
 
-        foreach (var item in letters)
+        foreach (var letter in letters)
         {
-            Instantiate(item);
+            GameObject newLetter =  Instantiate(letter);
+            newLetter.transform.position = new Vector2(Random.Range(-10, 10), Random.Range(-5, 5));
         }
     }
 
