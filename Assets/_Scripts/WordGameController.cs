@@ -9,9 +9,9 @@ public class WordGameController : MonoBehaviour
     [SerializeField] private WordLevel[] _wordLevel;
     [SerializeField] private TMP_Text _currentWord;
     [SerializeField] private GameObject _win;
-    private ObstacleSpawner obstacleSpawner; // Ссылка на спаунер препятствий
-    [SerializeField] private float minDistance = 2.0f; // Минимальное расстояние между объектами
-    [SerializeField] private GameObject plane; // Ссылка на объект самолёта
+    private ObstacleSpawner obstacleSpawner;
+    [SerializeField] private float minDistance = 2.0f;
+    [SerializeField] private GameObject plane;
     private HashSet<int> coloredIndices = new HashSet<int>();
     public static int LevelIndex;
 
@@ -36,8 +36,7 @@ public class WordGameController : MonoBehaviour
             }
         }
 
-        // Инициализация спаунера препятствий с учетом уже существующих букв
-        obstacleSpawner.plane = plane; // Передача ссылки на самолёт
+        obstacleSpawner.plane = plane;
         obstacleSpawner.Initialize(spawnedLetters, minDistance);
     }
 
@@ -60,7 +59,6 @@ public class WordGameController : MonoBehaviour
                 }
             }
 
-            // Проверка на перекрытие с самолётом
             if (positionIsValid && plane != null && Vector2.Distance(newPosition, plane.transform.position) < minDistance)
             {
                 positionIsValid = false;
@@ -128,6 +126,10 @@ public class WordGameController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         LevelIndex++;
         PlayerPrefs.SetInt("levelIndex", LevelIndex);
+        if (PlayerPrefs.GetInt("bestLevel", 1) < LevelIndex)
+        {
+            PlayerPrefs.SetInt("bestLevel", LevelIndex);
+        }
         _win.SetActive(true);
         Time.timeScale = 0;
     }

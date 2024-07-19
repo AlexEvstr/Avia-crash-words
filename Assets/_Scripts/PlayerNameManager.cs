@@ -8,23 +8,25 @@ public class PlayerNameManager : MonoBehaviour
     [SerializeField] private TMP_InputField nameInputField;
     [SerializeField] private Button submitButton;
     [SerializeField] private TMP_Text _welcomeText;
+    [SerializeField] private GameObject _menuWindow;
     private const string PlayerNameKey = "PlayerName";
 
     private void Start()
     {
         string playerName = PlayerPrefs.GetString(PlayerNameKey);
-        // Проверка, если имя игрока уже сохранено
+
         if (PlayerPrefs.HasKey(PlayerNameKey))
         {
             _welcomeText.text = "Welcome back, " + playerName + "!";
-            inputPanel.SetActive(false); // Скрыть панель ввода
+            inputPanel.SetActive(false);
+            _menuWindow.SetActive(true);
         }
         else
         {
-            inputPanel.SetActive(true); // Показать панель ввода
+            _menuWindow.SetActive(false);
+            inputPanel.SetActive(true);
         }
 
-        // Подписка на событие нажатия кнопки
         submitButton.onClick.AddListener(OnSubmitButtonClicked);
     }
 
@@ -36,8 +38,8 @@ public class PlayerNameManager : MonoBehaviour
         {
             PlayerPrefs.SetString(PlayerNameKey, playerName);
             PlayerPrefs.Save();
-            Debug.Log("Player name saved: " + playerName);
-            inputPanel.SetActive(false); // Скрыть панель ввода
+            inputPanel.SetActive(false);
+            _menuWindow.SetActive(true);
             _welcomeText.text = "Hello, " + playerName + "!";
         }
         else
