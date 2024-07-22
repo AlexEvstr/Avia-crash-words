@@ -21,7 +21,7 @@ public class BackgroundManager : MonoBehaviour
     void Start()
     {
         currentLevelIndex = PlayerPrefs.GetInt("levelIndex", 1);
-        currentLevelIndex = 16;
+        //currentLevelIndex = 16;
         _backgroundImage.sprite = _backgroundSprites[PlayerPrefs.GetInt("selectedBackgroundIndex", 0)];
 
         // Получаем индекс выбранного фона из PlayerPrefs

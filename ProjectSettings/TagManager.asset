@@ -6,6 +6,9 @@ TagManager:
   tags:
   - letter
   - Obstacle
+  - Balloon
+  - Meteorite
+  - Trash
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +8,7 @@ public class GameSkinsManager : MonoBehaviour
     [SerializeField] private SpriteRenderer _plane;
     [SerializeField] private Sprite[] _planeSprites;
 
-    private void Start()
+    private void Awake()
     {
         _backgroundImage.sprite = _backgroundSprites[PlayerPrefs.GetInt("selectedBackgroundIndex", 0)];
         _plane.sprite = _planeSprites[PlayerPrefs.GetInt("selectedAirplaneIndex", 0)];

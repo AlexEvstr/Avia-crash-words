@@ -29,7 +29,7 @@ public class CountdownTimer : MonoBehaviour
                 timeRemaining = 0;
                 timerIsRunning = false;
                 timerText.text = "00";
-                StartCoroutine(ShowLose());
+                LoseBehavior();
             }
         }
     }
@@ -40,6 +40,12 @@ public class CountdownTimer : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         timerText.text = string.Format("{0:00}", seconds);
     }
+
+    public void LoseBehavior()
+    {
+        StartCoroutine(ShowLose());
+    }
+
 
     private IEnumerator ShowLose()
     {

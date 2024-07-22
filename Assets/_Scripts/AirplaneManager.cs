@@ -19,7 +19,7 @@ public class AirplaneManager : MonoBehaviour
     void Start()
     {
         currentLevelIndex = PlayerPrefs.GetInt("levelIndex", 1);
-        currentLevelIndex = 16;
+        //currentLevelIndex = 16;
 
         // Получаем индекс выбранного самолета из PlayerPrefs
         int selectedAirplaneIndex = PlayerPrefs.GetInt("selectedAirplaneIndex", 0);

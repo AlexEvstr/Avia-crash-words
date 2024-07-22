@@ -12,6 +12,7 @@ public class WordGameController : MonoBehaviour
     private ObstacleSpawner obstacleSpawner;
     [SerializeField] private float minDistance = 2.0f;
     [SerializeField] private GameObject plane;
+    [SerializeField] private GameObject _winEffect;
     private HashSet<int> coloredIndices = new HashSet<int>();
     public static int LevelIndex;
 
@@ -122,7 +123,9 @@ public class WordGameController : MonoBehaviour
 
     private IEnumerator WinBehavior()
     {
-        yield return new WaitForSeconds(0.5f);
+        GameObject winEffect = Instantiate(_winEffect);
+        winEffect.transform.position = plane.transform.position;
+        yield return new WaitForSeconds(1f);
         LevelIndex++;
         PlayerPrefs.SetInt("levelIndex", LevelIndex);
         if (PlayerPrefs.GetInt("bestLevel", 1) < LevelIndex)
