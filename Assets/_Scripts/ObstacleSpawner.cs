@@ -59,12 +59,7 @@ public class ObstacleSpawner : MonoBehaviour
 
             if (newObstacle != null)
             {
-                Debug.Log($"Obstacle {i} spawned at {newObstacle.transform.position} after {attempt} attempts.");
                 spawnedObjects.Add(newObstacle);
-            }
-            else
-            {
-                Debug.LogWarning($"Could not find a valid position for a new obstacle {i} after {maxAttempts} attempts.");
             }
         }
     }

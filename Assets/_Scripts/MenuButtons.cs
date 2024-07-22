@@ -9,6 +9,8 @@ public class MenuButtons : MonoBehaviour
     [SerializeField] private GameObject _levelsWindow;
     [SerializeField] private GameObject _skinsWindow;
     [SerializeField] private GameObject _settingsWindow;
+    [SerializeField] private GameObject _planesSkinsWindow;
+    [SerializeField] private GameObject _backsSkinsWindow;
 
     private void Start()
     {
@@ -49,5 +51,17 @@ public class MenuButtons : MonoBehaviour
     {
         _settingsWindow.SetActive(false);
         _menuWindow.SetActive(true);
+    }
+
+    public void OpenPlanes()
+    {
+        _backsSkinsWindow.SetActive(false);
+        _planesSkinsWindow.SetActive(true);
+    }
+
+    public void OpenBacks()
+    {
+        _planesSkinsWindow.SetActive(false);
+        _backsSkinsWindow.SetActive(true);
     }
 }

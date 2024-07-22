@@ -21,7 +21,6 @@ public class WordGameController : MonoBehaviour
     {
         obstacleSpawner = GetComponent<ObstacleSpawner>();
         LevelIndex = PlayerPrefs.GetInt("levelIndex", 1);
-        Debug.Log(LevelIndex);
         _currentWord.text = _wordLevel[LevelIndex - 1].ShowWord();
 
         GameObject[] letters = _wordLevel[LevelIndex - 1].SetLetterPrefabs();

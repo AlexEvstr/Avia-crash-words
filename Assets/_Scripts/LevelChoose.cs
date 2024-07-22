@@ -9,7 +9,6 @@ public class LevelChoose : MonoBehaviour
 
     private void Start()
     {
-        transform.GetChild(1).gameObject.SetActive(false);
         CheckLevel();
         levelButton.onClick.AddListener(ChooseLevel);
     }
