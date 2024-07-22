@@ -11,6 +11,7 @@ public class MenuButtons : MonoBehaviour
     [SerializeField] private GameObject _settingsWindow;
     [SerializeField] private GameObject _planesSkinsWindow;
     [SerializeField] private GameObject _backsSkinsWindow;
+    [SerializeField] private GameObject _howToPlayWindow;
 
     private void Start()
     {
@@ -63,5 +64,17 @@ public class MenuButtons : MonoBehaviour
     {
         _planesSkinsWindow.SetActive(false);
         _backsSkinsWindow.SetActive(true);
+    }
+
+    public void OpenHowToPlay()
+    {
+        _menuWindow.SetActive(false);
+        _howToPlayWindow.SetActive(true);
+    }
+
+    public void CloseHowToPlay()
+    {
+        _howToPlayWindow.SetActive(false);
+        _menuWindow.SetActive(true);
     }
 }

@@ -7,14 +7,15 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private GameObject _losePanel;
     private GameAudioManager _gameAudioManager;
-    private float timeRemaining = 60;
+    private float timeRemaining;
     private bool timerIsRunning = false;
 
-    private void Start()
+    private void Awake()
     {
         Time.timeScale = 1;
         _gameAudioManager = GetComponent<GameAudioManager>();
         timerIsRunning = true;
+        timeRemaining = 59f;
     }
 
     private void Update()

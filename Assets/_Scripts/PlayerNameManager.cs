@@ -17,7 +17,7 @@ public class PlayerNameManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey(PlayerNameKey))
         {
-            _welcomeText.text = "Welcome back, " + playerName + "!";
+            _welcomeText.text = "welcome back, " + playerName + "!";
             inputPanel.SetActive(false);
             _menuWindow.SetActive(true);
         }
