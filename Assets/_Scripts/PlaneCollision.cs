@@ -6,6 +6,7 @@ public class PlaneCollision : MonoBehaviour
 {
     [SerializeField] private WordGameController _wordGameController;
     [SerializeField] private GameObject[] _effects;
+    [SerializeField] private GameAudioManager _gameAudioManager;
 
     private void Start()
     {
@@ -17,14 +18,11 @@ public class PlaneCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("letter"))
         {
             Destroy(collision.gameObject);
-            if (GameObject.FindGameObjectWithTag("letter") != null)
-            {
-                int effectIndex = Random.Range(0, _effects.Length);
-                GameObject newEffect = Instantiate(_effects[effectIndex]);
-                newEffect.transform.position = collision.gameObject.transform.position;
-            }
-
-            
+            int effectIndex = Random.Range(0, _effects.Length);
+            GameObject newEffect = Instantiate(_effects[effectIndex]);
+            newEffect.transform.position = collision.gameObject.transform.position;
+           
+            _gameAudioManager.PlayStarSound();
 
             string originalName = collision.gameObject.name;
             string cleanName = originalName.Replace("(Clone)", "").Trim();

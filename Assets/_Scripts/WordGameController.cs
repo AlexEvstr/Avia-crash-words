@@ -14,12 +14,14 @@ public class WordGameController : MonoBehaviour
     [SerializeField] private GameObject plane;
     [SerializeField] private GameObject _winEffect;
     private HashSet<int> coloredIndices = new HashSet<int>();
+    private GameAudioManager _gameAudioManager;
     public static int LevelIndex;
 
     private List<GameObject> spawnedLetters = new List<GameObject>();
 
     private void Start()
     {
+        _gameAudioManager = GetComponent<GameAudioManager>();
         obstacleSpawner = GetComponent<ObstacleSpawner>();
         LevelIndex = PlayerPrefs.GetInt("levelIndex", 1);
         _currentWord.text = _wordLevel[LevelIndex - 1].ShowWord();
@@ -123,9 +125,13 @@ public class WordGameController : MonoBehaviour
 
     private IEnumerator WinBehavior()
     {
-        GameObject winEffect = Instantiate(_winEffect);
-        winEffect.transform.position = plane.transform.position;
         yield return new WaitForSeconds(1f);
+        GameObject winEffect = Instantiate(_winEffect, plane.transform);
+        winEffect.transform.position = plane.transform.position;
+        _gameAudioManager.PlayWin();
+        yield return new WaitForSeconds(1f);
+       
+        
         LevelIndex++;
         PlayerPrefs.SetInt("levelIndex", LevelIndex);
         if (PlayerPrefs.GetInt("bestLevel", 1) < LevelIndex)

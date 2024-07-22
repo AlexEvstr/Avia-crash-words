@@ -10,7 +10,6 @@ public class MenuAudioManager : MonoBehaviour
     [SerializeField] private Slider _musicSlider;
     [SerializeField] private Slider _soundSlider;
     [SerializeField] private AudioClip _click;
-    [SerializeField] private AudioClip _spinning;
     [SerializeField] private GameObject _vibrationOnButton;
     [SerializeField] private GameObject _vibrationOffButton;
 
@@ -23,7 +22,7 @@ public class MenuAudioManager : MonoBehaviour
         Vibration.Init();
         int vibrationPreference = PlayerPrefs.GetInt("vibrationPreference", 1);
         isVibrationEnabled = vibrationPreference == 1;
-        //isVibrationEnabled = false;
+        isVibrationEnabled = false;
         if (isVibrationEnabled) EnableVibration(); else DisableVibration();
 
         _musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
@@ -53,13 +52,6 @@ public class MenuAudioManager : MonoBehaviour
         _soundsSource.PlayOneShot(_click);
         if (isVibrationEnabled)
             Vibration.VibrateIOS(ImpactFeedbackStyle.Soft);
-    }
-
-    public void PlaySpinningSound()
-    {
-        _soundsSource.PlayOneShot(_spinning);
-        if (isVibrationEnabled)
-            Vibration.Vibrate();
     }
 
     public void DisableVibration()

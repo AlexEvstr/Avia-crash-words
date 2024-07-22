@@ -6,12 +6,14 @@ public class CountdownTimer : MonoBehaviour
 {
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private GameObject _losePanel;
+    private GameAudioManager _gameAudioManager;
     private float timeRemaining = 60;
     private bool timerIsRunning = false;
 
     private void Start()
     {
         Time.timeScale = 1;
+        _gameAudioManager = GetComponent<GameAudioManager>();
         timerIsRunning = true;
     }
 
@@ -50,6 +52,7 @@ public class CountdownTimer : MonoBehaviour
     private IEnumerator ShowLose()
     {
         yield return new WaitForSeconds(1.0f);
+        _gameAudioManager.PlayLose();
         _losePanel.SetActive(true);
         Time.timeScale = 0;
     }

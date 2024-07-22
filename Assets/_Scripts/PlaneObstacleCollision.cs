@@ -8,6 +8,7 @@ public class PlaneObstacleCollision : MonoBehaviour
     [SerializeField] private GameObject _explosion;
     [SerializeField] private LifeSystem _lifeSystem;
     [SerializeField] private CameraShake _cameraShake;
+    [SerializeField] private GameAudioManager _gameAudioManager;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -19,6 +20,7 @@ public class PlaneObstacleCollision : MonoBehaviour
             Destroy(badEffect, 1f);
             _lifeSystem.TakeDamage();
             _cameraShake.TriggerShake();
+            _gameAudioManager.PlayMinusLife();
         }
 
         else if (collision.gameObject.CompareTag("Trash"))
@@ -29,6 +31,7 @@ public class PlaneObstacleCollision : MonoBehaviour
             Destroy(badEffect, 1f);
             _lifeSystem.TakeDamage();
             _cameraShake.TriggerShake();
+            _gameAudioManager.PlayMinusLife();
         }
 
         else if (collision.gameObject.CompareTag("Meteorite"))
@@ -40,6 +43,7 @@ public class PlaneObstacleCollision : MonoBehaviour
             Destroy(explosion, 0.25f);
             _lifeSystem.TakeDamage();
             _cameraShake.TriggerShake();
+            _gameAudioManager.PlayMinusLife();
         }
     }
 }
