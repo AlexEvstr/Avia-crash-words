@@ -16,6 +16,7 @@ public class MenuButtons : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1;
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 
     public void ClickPlayBtn()

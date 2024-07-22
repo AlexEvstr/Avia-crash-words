@@ -22,7 +22,7 @@ public class MenuAudioManager : MonoBehaviour
         Vibration.Init();
         int vibrationPreference = PlayerPrefs.GetInt("vibrationPreference", 1);
         isVibrationEnabled = vibrationPreference == 1;
-        isVibrationEnabled = false;
+        //isVibrationEnabled = false;
         if (isVibrationEnabled) EnableVibration(); else DisableVibration();
 
         _musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);

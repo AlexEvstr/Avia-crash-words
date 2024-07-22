@@ -6,6 +6,11 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private GameObject _pause;
     [SerializeField] private GameObject _pauseBtn;
 
+    private void Start()
+    {
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+    }
+
     public void PauseButton()
     {
         _pause.SetActive(true);
